@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>432734927809-q4ctfff84q697sdu9633ih8cg0n8g8g9.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.432734927809-q4ctfff84q697sdu9633ih8cg0n8g8g9</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDfZopaY-TPlK5zbpDzNlccMdFEr7mv0Fo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>432734927809</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.MXK.AllerCheck</string>
+	<key>PROJECT_ID</key>
+	<string>allercheck-d18da</string>
+	<key>STORAGE_BUCKET</key>
+	<string>allercheck-d18da.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:432734927809:ios:75bfa40b7f7443c0</string>
+	<key>DATABASE_URL</key>
+	<string>https://allercheck-d18da.firebaseio.com</string>
+</dict>
+</plist>

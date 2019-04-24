@@ -71,6 +71,7 @@ extension ScanViewController: BarcodeScannerCodeDelegate {
         print("UPC Code from Barcode Scanner: \(code)")
         
         controller.reset()
+        tabBarController?.selectedIndex = 2
     }
     
 }

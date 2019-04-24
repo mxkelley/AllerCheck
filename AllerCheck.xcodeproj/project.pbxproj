@@ -22,6 +22,7 @@
 		A3DDD2722270C7F6006EAFE6 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DDD2712270C7F6006EAFE6 /* AboutViewController.swift */; };
 		A3DDD2742270C831006EAFE6 /* MyFavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DDD2732270C831006EAFE6 /* MyFavoritesViewController.swift */; };
 		A3DDD2762270C849006EAFE6 /* MyFavoritesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DDD2752270C849006EAFE6 /* MyFavoritesDetailViewController.swift */; };
+		A3DDD2782270CD26006EAFE6 /* ScanResponseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DDD2772270CD26006EAFE6 /* ScanResponseViewController.swift */; };
 		E7A15072A74F8ED5D04D01C3 /* Pods_AllerCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DB0A235705D57CB72DCC3F6 /* Pods_AllerCheck.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		A3DDD2712270C7F6006EAFE6 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		A3DDD2732270C831006EAFE6 /* MyFavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFavoritesViewController.swift; sourceTree = "<group>"; };
 		A3DDD2752270C849006EAFE6 /* MyFavoritesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFavoritesDetailViewController.swift; sourceTree = "<group>"; };
+		A3DDD2772270CD26006EAFE6 /* ScanResponseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanResponseViewController.swift; sourceTree = "<group>"; };
 		FE9C427E1420530BFC17910A /* Pods-AllerCheck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllerCheck.debug.xcconfig"; path = "Target Support Files/Pods-AllerCheck/Pods-AllerCheck.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,6 +99,7 @@
 				A38B3D99226F613500FB3310 /* LoginViewController.swift */,
 				A3DDD2712270C7F6006EAFE6 /* AboutViewController.swift */,
 				A3DDD265226F7B6E006EAFE6 /* ScanViewController.swift */,
+				A3DDD2772270CD26006EAFE6 /* ScanResponseViewController.swift */,
 				A3DDD26D226FA552006EAFE6 /* MyAllergiesViewController.swift */,
 				A3DDD26F226FA566006EAFE6 /* MyAllergiesDetailViewController.swift */,
 				A3DDD2732270C831006EAFE6 /* MyFavoritesViewController.swift */,
@@ -288,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3DDD2782270CD26006EAFE6 /* ScanResponseViewController.swift in Sources */,
 				A3DDD270226FA566006EAFE6 /* MyAllergiesDetailViewController.swift in Sources */,
 				A3DDD268226F93B4006EAFE6 /* FoodUPCInfo.swift in Sources */,
 				A3DDD26E226FA552006EAFE6 /* MyAllergiesViewController.swift in Sources */,

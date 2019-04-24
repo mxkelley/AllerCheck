@@ -55,7 +55,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="dep-sk-Qeo" kind="show" id="HoF-hE-3Mn"/>
+                                            <segue destination="W8l-eS-Uwf" kind="show" id="gDd-CY-S35"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -74,19 +74,19 @@
                         <barButtonItem key="leftBarButtonItem" title="Edit" id="JV8-mg-Zw7"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="sK3-t8-lyC">
                             <connections>
-                                <segue destination="BA0-m1-vHr" kind="presentation" identifier="AddAllergy" id="nD6-Ms-ii6"/>
+                                <segue destination="j8r-hE-Lbh" kind="presentation" id="Y3y-V4-XdQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vsA-85-5NE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4920.8000000000002" y="228.93553223388307"/>
+            <point key="canvasLocation" x="4921" y="858"/>
         </scene>
-        <!--Allergen Info-->
+        <!--Scan Response View Controller-->
         <scene sceneID="FCa-r2-AKH">
             <objects>
-                <viewController id="dep-sk-Qeo" customClass="MyAllergiesDetailViewController" customModule="AllerCheck" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dep-sk-Qeo" customClass="ScanResponseViewController" customModule="AllerCheck" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="feu-w8-K6f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -210,14 +210,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="d7t-hg-f8s"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Allergen Info" id="Pjz-rI-rJO">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="sLv-hO-fJS"/>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="kVh-l5-je8"/>
+                    <navigationItem key="navigationItem" id="Pjz-rI-rJO">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="kVh-l5-je8"/>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pYl-9o-3vo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6997.6000000000004" y="228.93553223388307"/>
+            <point key="canvasLocation" x="4921" y="135"/>
         </scene>
         <!--My Favorites-->
         <scene sceneID="g45-20-bov">
@@ -269,7 +268,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zIZ-95-Q7I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4920.8000000000002" y="995.35232383808102"/>
+            <point key="canvasLocation" x="4921" y="1611"/>
         </scene>
         <!--My Favorites Detail View Controller-->
         <scene sceneID="9Vw-s1-IYi">
@@ -371,7 +370,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BPs-gi-Box" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6997.6000000000004" y="994.45277361319347"/>
+            <point key="canvasLocation" x="6998" y="1611"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="N0r-ma-Ohg">
@@ -408,7 +407,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="info" id="iSp-yA-bou">
                             <connections>
-                                <segue destination="x5K-6t-Pd7" kind="presentation" id="Kap-3e-WS6"/>
+                                <segue destination="x5K-6t-Pd7" kind="presentation" identifier="AboutSegue" id="Kap-3e-WS6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -480,7 +479,7 @@
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Nutritionix" translatesAutoresizingMaskIntoConstraints="NO" id="4FR-Zt-QXd">
-                                <rect key="frame" x="199" y="213" width="160.00000000000023" height="128"/>
+                                <rect key="frame" x="199" y="213" width="160" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="IF6-rx-8u8"/>
                                     <constraint firstAttribute="width" constant="160" id="vDK-b7-SZf"/>
@@ -529,10 +528,15 @@
                         <viewLayoutGuide key="safeArea" id="pgn-0i-1qG"/>
                     </view>
                     <navigationItem key="navigationItem" title="About This App" id="K8G-hD-DVf">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="BmX-bT-ezb"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="BmX-bT-ezb">
+                            <connections>
+                                <segue destination="z8Q-ou-62J" kind="unwind" unwindAction="unwindFromAboutViewControllerWithSegue:" id="SZn-tz-spH"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xj9-lw-LgO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="z8Q-ou-62J" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="6997.6000000000004" y="-1334.4827586206898"/>
         </scene>
@@ -552,6 +556,7 @@
                     <connections>
                         <segue destination="Puh-Bo-Irx" kind="relationship" relationship="viewControllers" id="RT1-Da-t4a"/>
                         <segue destination="vMY-3L-hck" kind="relationship" relationship="viewControllers" id="LY5-rq-rsq"/>
+                        <segue destination="BA0-m1-vHr" kind="relationship" relationship="viewControllers" id="AjR-bU-bDk"/>
                         <segue destination="cCz-tA-qNX" kind="relationship" relationship="viewControllers" id="pYK-2d-3Iy"/>
                         <segue destination="JGO-Fa-ooa" kind="relationship" relationship="viewControllers" id="ig6-9W-egc"/>
                     </connections>
@@ -583,7 +588,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7fP-TC-Wrm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3980" y="228.93553223388307"/>
+            <point key="canvasLocation" x="3980" y="858"/>
         </scene>
         <!--My Favorites-->
         <scene sceneID="Ehu-7e-r2C">
@@ -608,7 +613,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DdS-Z4-gAV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3982" y="996"/>
+            <point key="canvasLocation" x="3980" y="1611"/>
         </scene>
         <!--Home-->
         <scene sceneID="fS0-Hp-bNc">
@@ -657,10 +662,11 @@
             </objects>
             <point key="canvasLocation" x="3980" y="-575"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Item Lookup-->
         <scene sceneID="U0i-vN-2WS">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BA0-m1-vHr" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" enabled="NO" title="Item Lookup" image="search" id="V18-xR-c9v"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uNx-AS-ujE">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -682,7 +688,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ISu-NI-zLZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5946" y="0.0"/>
+            <point key="canvasLocation" x="3980" y="136"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FVn-jS-Miw">
@@ -709,7 +715,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AfK-HQ-II8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5945" y="824"/>
+            <point key="canvasLocation" x="5945" y="1440"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="57f-vf-8X3">
@@ -738,6 +744,80 @@
             </objects>
             <point key="canvasLocation" x="5945" y="-1604"/>
         </scene>
+        <!--Allergen Info-->
+        <scene sceneID="zIO-Xe-WsM">
+            <objects>
+                <viewController id="W8l-eS-Uwf" customClass="MyAllergiesDetailViewController" customModule="AllerCheck" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TCH-6M-qy3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allergy Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b41-bh-4s4">
+                                <rect key="frame" x="16" y="91" width="343" height="41"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tkN-Uf-cyv">
+                                <rect key="frame" x="16" y="140" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ZKl-BI-RNN"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YYF-vC-dp2" firstAttribute="trailing" secondItem="tkN-Uf-cyv" secondAttribute="trailing" constant="16" id="0n1-UF-5kg"/>
+                            <constraint firstItem="tkN-Uf-cyv" firstAttribute="centerX" secondItem="TCH-6M-qy3" secondAttribute="centerX" id="46Z-Vd-6NS"/>
+                            <constraint firstItem="tkN-Uf-cyv" firstAttribute="top" secondItem="b41-bh-4s4" secondAttribute="bottom" constant="8" id="V38-L9-1gV"/>
+                            <constraint firstItem="b41-bh-4s4" firstAttribute="centerX" secondItem="TCH-6M-qy3" secondAttribute="centerX" id="fSt-Ck-sJk"/>
+                            <constraint firstItem="YYF-vC-dp2" firstAttribute="trailing" secondItem="b41-bh-4s4" secondAttribute="trailing" constant="16" id="mur-Gr-UNs"/>
+                            <constraint firstItem="b41-bh-4s4" firstAttribute="top" secondItem="YYF-vC-dp2" secondAttribute="top" constant="27" id="n3I-VN-HLv"/>
+                            <constraint firstItem="tkN-Uf-cyv" firstAttribute="top" secondItem="b41-bh-4s4" secondAttribute="bottom" constant="8" id="owJ-ri-ao1"/>
+                            <constraint firstItem="b41-bh-4s4" firstAttribute="leading" secondItem="YYF-vC-dp2" secondAttribute="leading" constant="16" id="p5M-Ly-4ME"/>
+                            <constraint firstItem="tkN-Uf-cyv" firstAttribute="leading" secondItem="YYF-vC-dp2" secondAttribute="leading" constant="16" id="pyB-Kd-pW1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="YYF-vC-dp2"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Allergen Info" id="NzD-6z-RTW">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="n20-aA-XQK"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="ywV-eK-nas"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h2k-bX-2Y2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6998" y="858"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5vM-qr-T0c">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="j8r-hE-Lbh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5bA-R9-AfC">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.0" green="0.30590450759999999" blue="0.60502326490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.0" green="0.30590450759999999" blue="0.60502326490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="W8l-eS-Uwf" kind="relationship" relationship="rootViewController" id="Q8j-kO-013"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MmW-X3-g9Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5945" y="574"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Alamofire" width="553" height="207"/>
@@ -752,9 +832,10 @@
         <image name="info" width="30" height="30"/>
         <image name="restaurant" width="30" height="30"/>
         <image name="screenshot" width="30" height="30"/>
+        <image name="search" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="gDd-CY-S35"/>
         <segue reference="egf-c3-A6x"/>
-        <segue reference="HoF-hE-3Mn"/>
     </inferredMetricsTieBreakers>
 </document>

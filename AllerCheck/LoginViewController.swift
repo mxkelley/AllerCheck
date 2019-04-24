@@ -52,7 +52,8 @@ class LoginViewController: UIViewController {
             self.tabBarController?.tabBar.isHidden = true
             print("*** ERROR: Couldn't sign out")
         }
-    }    
+    }
+    
     
 }
 

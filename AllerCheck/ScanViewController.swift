@@ -22,7 +22,7 @@ class ScanViewController: UIViewController {
         controller.codeDelegate = self
         controller.errorDelegate = self
         controller.dismissalDelegate = self
-        controller.navigationItem.hidesBackButton = true
+//        controller.navigationItem.hidesBackButton = true
         clearDefaults()
         
     }
@@ -68,7 +68,8 @@ class ScanViewController: UIViewController {
 
 extension ScanViewController: BarcodeScannerCodeDelegate {
     func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
-        print(code)
+        print("UPC Code from Barcode Scanner: \(code)")
+        
         controller.reset()
     }
     

@@ -27,7 +27,7 @@ class FoodUPCs {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                let upc = apiUPC
+                let upc = self.apiUPC
                 let brand = json["brand_name"].stringValue
                 let name = json["item_name"].stringValue
                 let description = json["item_description"].stringValue

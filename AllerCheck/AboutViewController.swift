@@ -15,9 +15,9 @@ class AboutViewController: UIViewController {
 
     }
     
-    @IBAction func unwindFromAboutViewController (segue: UIStoryboardSegue) {
-        
+    @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
     }
-
+    
 
 }

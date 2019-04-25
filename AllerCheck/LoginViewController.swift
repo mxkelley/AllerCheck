@@ -15,6 +15,7 @@ import GoogleSignIn
 class LoginViewController: UIViewController {
     
     var authUI: FUIAuth!
+    @IBOutlet weak var logoLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()

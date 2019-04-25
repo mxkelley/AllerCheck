@@ -22,8 +22,8 @@ class ScanViewController: UIViewController {
         controller.codeDelegate = self
         controller.errorDelegate = self
         controller.dismissalDelegate = self
-//        controller.navigationItem.hidesBackButton = true
-        clearDefaults()
+        
+        clearUserDefaults()
         
     }
     
@@ -31,13 +31,15 @@ class ScanViewController: UIViewController {
         showCamera()
     }
     
-    func clearDefaults() {
-//        let defaults = UserDefaults.standard
-//        defaults.set("", forKey: "name")
-//        defaults.set("", forKey: "calories")
-//        defaults.set("", forKey: "carbohydrates")
-//        defaults.set("", forKey: "fat")
-//        defaults.set("", forKey: "protein")
+    func clearUserDefaults() {
+        let defaultsData = UserDefaults.standard
+        let food = FoodUPCs()
+        food.foodUPCArray = []
+        defaultsData.set(0, forKey: "upc")
+        defaultsData.set("", forKey: "brand")
+        defaultsData.set("", forKey: "name")
+        defaultsData.set("", forKey: "description")
+        defaultsData.set("", forKey: "ingredients")
     }
     
     func showCamera() {
@@ -68,10 +70,25 @@ class ScanViewController: UIViewController {
 
 extension ScanViewController: BarcodeScannerCodeDelegate {
     func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
+        let defaultsData = UserDefaults.standard
+        let food = FoodUPCs()
+        
         print("UPC Code from Barcode Scanner: \(code)")
         
-        controller.reset()
-        tabBarController?.selectedIndex = 2
+        food.getFoodData(UPC: Int(code)!, completed: {
+            defaultsData.set(food.foodUPCArray[0].upc, forKey: "upc")
+            defaultsData.set(food.foodUPCArray[0].brand, forKey: "brand")
+            defaultsData.set(food.foodUPCArray[0].name, forKey: "name")
+            defaultsData.set(food.foodUPCArray[0].description, forKey: "description")
+            defaultsData.set(food.foodUPCArray[0].ingredients, forKey: "ingredients")
+            print("Completed")
+        })
+        
+        let delayTime = DispatchTime.now() + 2
+        DispatchQueue.main.asyncAfter(deadline: delayTime ) {
+            self.controller.reset()
+            self.tabBarController?.selectedIndex = 2
+        }
     }
     
 }

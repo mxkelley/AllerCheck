@@ -38,7 +38,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="Xyh-hA-nbl" style="IBUITableViewCellStyleDefault" id="O1t-1g-tLv">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" textLabel="Xyh-hA-nbl" style="IBUITableViewCellStyleDefault" id="O1t-1g-tLv">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="O1t-1g-tLv" id="jWP-ZP-vJw">
@@ -55,7 +55,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="W8l-eS-Uwf" kind="show" id="gDd-CY-S35"/>
+                                            <segue destination="W8l-eS-Uwf" kind="show" identifier="ShowAllergy" id="gDd-CY-S35"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -71,13 +71,22 @@
                         <viewLayoutGuide key="safeArea" id="9Tj-Jf-zAc"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Allergies" id="yXU-y7-u5c">
-                        <barButtonItem key="leftBarButtonItem" title="Edit" id="JV8-mg-Zw7"/>
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="JV8-mg-Zw7">
+                            <connections>
+                                <action selector="editBarButtonPressed:" destination="Mew-x8-Rs4" id="4I5-9t-tSH"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="sK3-t8-lyC">
                             <connections>
-                                <segue destination="j8r-hE-Lbh" kind="presentation" id="Y3y-V4-XdQ"/>
+                                <segue destination="j8r-hE-Lbh" kind="presentation" identifier="AddAllergy" id="Y3y-V4-XdQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addBarButton" destination="sK3-t8-lyC" id="HW2-ip-1mv"/>
+                        <outlet property="editBarButton" destination="JV8-mg-Zw7" id="TR5-za-yAp"/>
+                        <outlet property="tableView" destination="uQB-Og-E6S" id="3CY-6V-5mN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vsA-85-5NE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -239,7 +248,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="aJc-bl-L8k" style="IBUITableViewCellStyleDefault" id="bnk-bn-OFc">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" textLabel="aJc-bl-L8k" style="IBUITableViewCellStyleDefault" id="bnk-bn-OFc">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bnk-bn-OFc" id="blk-wK-ut1">
@@ -746,7 +755,7 @@
             </objects>
             <point key="canvasLocation" x="5945" y="-1604"/>
         </scene>
-        <!--Allergen Info-->
+        <!--Allergy Info-->
         <scene sceneID="zIO-Xe-WsM">
             <objects>
                 <viewController id="W8l-eS-Uwf" customClass="MyAllergiesDetailViewController" customModule="AllerCheck" customModuleProvider="target" sceneMemberID="viewController">
@@ -768,6 +777,10 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="allergyFieldChanged:" destination="W8l-eS-Uwf" eventType="editingChanged" id="Iye-3A-dgR"/>
+                                    <action selector="allergyFieldReturnPressed:" destination="W8l-eS-Uwf" eventType="primaryActionTriggered" id="GWs-Xn-xGR"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -784,19 +797,33 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YYF-vC-dp2"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Allergen Info" id="NzD-6z-RTW">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="n20-aA-XQK"/>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="ywV-eK-nas"/>
+                    <navigationItem key="navigationItem" title="Allergy Info" id="NzD-6z-RTW">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="n20-aA-XQK">
+                            <connections>
+                                <action selector="cancelBarButtonPressed:" destination="W8l-eS-Uwf" id="OLa-gv-b8e"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="ywV-eK-nas">
+                            <connections>
+                                <action selector="saveBarButtonPressed:" destination="W8l-eS-Uwf" id="mtM-kZ-mJD"/>
+                                <segue destination="1Tu-Ai-qk8" kind="unwind" identifier="UnwindFromAllergySave" unwindAction="unwindFromMyAllergiesDetailViewControllerWithSegue:" id="ptr-Ps-0yE"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="allergyTextField" destination="tkN-Uf-cyv" id="zwv-Zz-CPI"/>
+                        <outlet property="saveBarButton" destination="ywV-eK-nas" id="DMp-X6-QyD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h2k-bX-2Y2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="1Tu-Ai-qk8" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="6998" y="858"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Allergy Info Navigation-->
         <scene sceneID="5vM-qr-T0c">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="j8r-hE-Lbh" sceneMemberID="viewController">
+                <navigationController title="Allergy Info Navigation" automaticallyAdjustsScrollViewInsets="NO" id="j8r-hE-Lbh" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5bA-R9-AfC">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -814,6 +841,7 @@
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="W8l-eS-Uwf" kind="relationship" relationship="rootViewController" id="Q8j-kO-013"/>
+                        <segue destination="W8l-eS-Uwf" kind="presentation" id="Be7-6C-sjI"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MmW-X3-g9Q" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -10,21 +10,67 @@ import UIKit
 
 class MyAllergiesDetailViewController: UIViewController {
 
+    @IBOutlet weak var saveBarButton: UIBarButtonItem!
+    @IBOutlet weak var allergyTextField: UITextField!
+    
+    var allergy: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        if allergy == nil {
+            allergy = ""
+        }
+        allergyTextField.text = allergy
+        
+        if allergyTextField.text!.count > 0 {
+            saveBarButton.isEnabled = true
+        } else {
+            saveBarButton.isEnabled = false
+        }
+        
+        allergyTextField.becomeFirstResponder()
+        
+        let tap = UITapGestureRecognizer(target: self.view, action:
+            #selector(UIView.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "UnwindFromAllergySave" {
+            allergy = allergyTextField.text
+        }
     }
-    */
+    
+    @IBAction func cancelBarButtonPressed(_ sender: UIBarButtonItem) {
+        if  (presentingViewController?.shouldPerformSegue(withIdentifier: "AddAllergy", sender: Any?.self) ?? false) {
+            allergyTextField.resignFirstResponder()
+            dismiss(animated: true, completion: nil)
+        } else {
+            navigationController!.popViewController(animated: true)
+        }
+    }
+    
+    
+    @IBAction func saveBarButtonPressed(_ sender: UIBarButtonItem) {
+    }
+    
+    @IBAction func allergyFieldChanged(_ sender: UITextField) {
+        if allergyTextField.text!.count > 0 {
+            saveBarButton.isEnabled = true
+        } else {
+            saveBarButton.isEnabled = false
+        }
+    }
+    
+    @IBAction func allergyFieldReturnPressed(_ sender: UITextField) {
+        sender.resignFirstResponder()
+        allergy = allergyTextField.text
+        performSegue(withIdentifier: "UnwindFromAllergySave", sender: Any?.self)
+    }
+    
+    
 
 }

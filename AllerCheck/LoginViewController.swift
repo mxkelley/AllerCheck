@@ -16,6 +16,8 @@ class LoginViewController: UIViewController {
     
     var authUI: FUIAuth!
     @IBOutlet weak var logoLabel: UILabel!
+    @IBOutlet weak var logOutBarButton: UIBarButtonItem!
+    @IBOutlet weak var aboutAppBarButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,7 @@ class LoginViewController: UIViewController {
         authUI?.delegate = self
         
         self.tabBarController?.tabBar.isHidden = true
+        logOutBarButton.title = "Log In"
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -39,6 +42,7 @@ class LoginViewController: UIViewController {
             present(authUI.authViewController(), animated: true, completion: nil)
         } else {
             self.tabBarController?.tabBar.isHidden = false
+            logOutBarButton.title = "Log Out"
         }
 
     }

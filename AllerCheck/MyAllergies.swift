@@ -103,7 +103,7 @@ class MyAllergies {
                     searchableAllergies.append(item)
                 }
             } else {
-                searchableAllergies.append(allergy)
+                searchableAllergies.append(allergy.lowercased())
             }
         }
         print("**** Searchable Allergies Added")

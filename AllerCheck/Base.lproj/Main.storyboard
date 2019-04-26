@@ -457,6 +457,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="aboutAppBarButton" destination="iSp-yA-bou" id="wTp-sg-ONQ"/>
+                        <outlet property="logOutBarButton" destination="Vw5-gV-ms0" id="DWf-Wb-TqB"/>
                         <outlet property="logoLabel" destination="zMB-BN-0eL" id="Zgg-in-3VX"/>
                     </connections>
                 </viewController>

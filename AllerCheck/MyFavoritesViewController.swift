@@ -33,7 +33,7 @@ class MyFavoritesViewController: UIViewController {
         if segue.identifier == "ShowFavorite" {
             let destination = segue.destination as! MyFavoritesDetailViewController
             let selectedIndexPath = tableView.indexPathForSelectedRow!
-//            destinato
+            destination.favorite = favorites.favoritesArray[selectedIndexPath.row]
         }
     }
 

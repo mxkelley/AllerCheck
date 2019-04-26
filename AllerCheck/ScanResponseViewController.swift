@@ -22,7 +22,7 @@ class ScanResponseViewController: UIViewController {
     var myAllergies = MyAllergies()
     let defaultsData = UserDefaults.standard
     
-    var favorite: Favorite!
+    var favorite = Favorite()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,8 +80,8 @@ class ScanResponseViewController: UIViewController {
     
     //MARK:- Adding Response to Favorites
     @IBAction func addToFavoritesButtonPressed(_ sender: UIButton) {
-        if let brandDefault = defaultsData.string(forKey: "brand") {
-            favorite.brandName = brandDefault
+        if let brandDefault = self.defaultsData.string(forKey: "brand") {
+            self.favorite.brandName = brandDefault
         }
         if let nameDefault = defaultsData.string(forKey: "name") {
             favorite.productName = nameDefault

@@ -34,10 +34,7 @@ class MyFavoritesDetailViewController: UIViewController {
         
     }
     
-    func leaveViewController() {
-        dismiss(animated: true, completion: nil)
-    }
-    
+    //MARK:- Deleting Data from Firebase Storage Using Delete Button
     @IBAction func deleteButtonPressed(_ sender: UIButton) {
         let db = Firestore.firestore()
         db.collection("favorites").document(favorite.documentID).delete() { error in
@@ -46,7 +43,13 @@ class MyFavoritesDetailViewController: UIViewController {
             } else {
                 let favorites = Favorites()
                 favorites.loadData {
-                    self.dismiss(animated: true, completion: nil)
+                    let isPresentingInAddMode = self.presentingViewController is UINavigationController
+                    if isPresentingInAddMode {
+                        self.dismiss(animated: true, completion: nil)
+                    } else {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                    
                 }
             }
         }

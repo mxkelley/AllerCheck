@@ -15,6 +15,7 @@ class MyAllergiesViewController: UIViewController {
     @IBOutlet weak var addBarButton: UIBarButtonItem!
     
     var myAllergies: MyAllergies!
+    var allergy: Allergy!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,7 @@ class MyAllergiesViewController: UIViewController {
         tableView.dataSource = self
         
         myAllergies = MyAllergies()
+        allergy = Allergy()
         
     }
     
@@ -34,8 +36,17 @@ class MyAllergiesViewController: UIViewController {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            myAllergies.allergiesArray.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade   )
+            allergy.deleteData(allergy: myAllergies.allergiesArray[indexPath.row]) { success in
+                if success {
+                    self.tabBarController?.selectedIndex = 0
+//                    tableView.deleteRows(at: [indexPath], with: .fade)
+//                    self.tableView.reloadData()
+                } else {
+                    print("😡 ERROR: Delete unsuccessful")
+                }
+            }
+//            myAllergies.allergiesArray.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath], with: .fade   )
         }
     }
     
@@ -58,18 +69,18 @@ class MyAllergiesViewController: UIViewController {
         }
     }
     
-    @IBAction func unwindFromMyAllergiesDetailViewController (segue: UIStoryboardSegue) {
-        let source = segue.source as! MyAllergiesDetailViewController
-        if let selectedIndexPath = tableView.indexPathForSelectedRow {
-            myAllergies.allergiesArray[selectedIndexPath.row] = source.allergy
-            tableView.reloadRows(at: [selectedIndexPath], with: .automatic)
-        } else {
-            let newIndexPath = IndexPath(row: myAllergies.allergiesArray.count, section: 0)
-            myAllergies.allergiesArray.append(source.allergy)
-            tableView.insertRows(at: [newIndexPath], with: .bottom)
-            tableView.scrollToRow(at: newIndexPath, at: .bottom, animated: true)
-        }
-    }
+//    @IBAction func unwindFromMyAllergiesDetailViewController (segue: UIStoryboardSegue) {
+//        let source = segue.source as! MyAllergiesDetailViewController
+//        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+//            myAllergies.allergiesArray[selectedIndexPath.row] = source.allergy
+//            tableView.reloadRows(at: [selectedIndexPath], with: .automatic)
+//        } else {
+//            let newIndexPath = IndexPath(row: myAllergies.allergiesArray.count, section: 0)
+//            myAllergies.allergiesArray.append(source.allergy)
+//            tableView.insertRows(at: [newIndexPath], with: .bottom)
+//            tableView.scrollToRow(at: newIndexPath, at: .bottom, animated: true)
+//        }
+//    }
     
     @IBAction func editBarButtonPressed(_ sender: UIBarButtonItem) {
         if tableView.isEditing {

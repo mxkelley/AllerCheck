@@ -75,11 +75,12 @@ extension ScanViewController: BarcodeScannerCodeDelegate {
         let myAllergies = MyAllergies()
         var allergiesArray: [String] = []
         
-        for index in 0..<myAllergies.allergiesArray.count {
-            allergiesArray.append(myAllergies.allergiesArray[index].allergy)
+        myAllergies.loadData {
+            for index in 0..<myAllergies.allergiesArray.count {
+                allergiesArray.append(myAllergies.allergiesArray[index].allergy)
+            }
         }
         
-        print(allergiesArray)
         print("UPC Code from Barcode Scanner: \(code)")
         
         food.getFoodData(UPC: Int(code)!, completed: {

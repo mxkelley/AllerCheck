@@ -27,11 +27,21 @@ class MyAllergies {
                 return completed()
             }
             self.allergiesArray = []
+            
             //there are querySnapshot.documents.count documents in the spots snapshot
             for document in querySnapshot!.documents {
                 let allergy = Allergy(dictionary: document.data())
-                allergy.documentID = document.documentID
-                self.allergiesArray.append(allergy)
+                _ = Firestore.firestore()
+                //Grab the userID
+                guard let currentUser = (Auth.auth().currentUser?.uid) else {
+                    print("*** ERROR: Could not save data because we don't have a valid postingUserID")
+                    return
+                }
+                if allergy.postingUserID == currentUser {
+                        allergy.documentID = document.documentID
+                        self.allergiesArray.append(allergy)
+                }
+                
             }
             completed()
         }

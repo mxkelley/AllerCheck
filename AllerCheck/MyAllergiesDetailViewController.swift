@@ -38,16 +38,6 @@ class MyAllergiesDetailViewController: UIViewController {
         
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "UnwindFromAllergySave" {
-//            allergy = allergyTextField.text
-//        }
-//    }
-    
-    func updateDataFromInterface() {
-        allergy.allergy = allergyTextField.text!
-    }
-    
     func leaveViewController() {
         if  (presentingViewController?.shouldPerformSegue(withIdentifier: "AddAllergy", sender: Any?.self) ?? false) {
             allergyTextField.resignFirstResponder()
@@ -61,17 +51,19 @@ class MyAllergiesDetailViewController: UIViewController {
         leaveViewController()
     }
     
-    
     @IBAction func saveBarButtonPressed(_ sender: UIBarButtonItem) {
+        self.allergy.allergy = self.allergyTextField.text!
         allergy.saveData { success in
-            self.allergy.allergy = self.allergyTextField.text!
             if success {
+                print(self.allergy.allergy)
                 self.leaveViewController()
             } else {
                 print("Can't segue because of the error")
             }
         }
     }
+    
+    
     
     @IBAction func allergyFieldChanged(_ sender: UITextField) {
         if allergyTextField.text!.count > 0 {
@@ -83,8 +75,8 @@ class MyAllergiesDetailViewController: UIViewController {
     
     @IBAction func allergyFieldReturnPressed(_ sender: UITextField) {
         sender.resignFirstResponder()
+        self.allergy.allergy = self.allergyTextField.text!
         allergy.saveData { success in
-            self.allergy.allergy = self.allergyTextField.text!
             if success {
                 print(self.allergy.allergy)
                 self.leaveViewController()
@@ -92,8 +84,6 @@ class MyAllergiesDetailViewController: UIViewController {
                 print("Can't segue because of the error")
             }
         }
-//        allergy = allergyTextField.text
-//        performSegue(withIdentifier: "UnwindFromAllergySave", sender: Any?.self)
     }
     
     

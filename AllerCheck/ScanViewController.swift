@@ -6,7 +6,7 @@
 //  Copyright © 2019 Michael X Kelley. All rights reserved.
 //
 
-//NOTE: This page is modeled after an app created by former student Vlad Chilom
+//ACKNLOWLEDGEMENT: This BarcodeScanner code is modeled after template code provided by BarcodeScanner CocoaPod and former Swift student Vlad Chilom
 
 import UIKit
 import AVFoundation
@@ -68,6 +68,7 @@ class ScanViewController: UIViewController {
     
 }
 
+//MARK:- Successful Response from UPC Capture
 extension ScanViewController: BarcodeScannerCodeDelegate {
     func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
         let defaultsData = UserDefaults.standard
@@ -109,6 +110,7 @@ extension ScanViewController: BarcodeScannerCodeDelegate {
     
 }
 
+//MARK:- Unsuccessful UPC Capture
 extension ScanViewController: BarcodeScannerErrorDelegate {
     func scanner(_ controller: BarcodeScannerViewController, didReceiveError error: Error) {
         print(error)
@@ -116,6 +118,7 @@ extension ScanViewController: BarcodeScannerErrorDelegate {
     
 }
 
+//MARK:- Dismissing UPC View Controller
 extension ScanViewController: BarcodeScannerDismissalDelegate {
     func scannerDidDismiss(_ controller: BarcodeScannerViewController) {
         controller.dismiss(animated: true, completion: nil)

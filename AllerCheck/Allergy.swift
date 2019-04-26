@@ -14,6 +14,7 @@ class Allergy {
     var postingUserID: String
     var documentID: String
     
+    //MARK:- Dictionary Declarations
     var dictionary: [String: Any] {
         return ["allergy": allergy, "postingUserID": postingUserID, "documentID": documentID]
     }
@@ -35,6 +36,7 @@ class Allergy {
         self.init(allergy: allergy, postingUserID: postingUserID, documentID: "")
     }
     
+    //MARK:- Save Data to Firebase Storage Function
     func saveData(completed: @escaping (Bool) -> ()) {
         print(allergy)
         let db = Firestore.firestore()
@@ -69,18 +71,6 @@ class Allergy {
                     self.documentID = ref!.documentID
                     completed(true)
                 }
-            }
-        }
-    }
-    
-    func deleteData(allergy: Allergy, completed: @escaping (Bool) -> ()) {
-        let db = Firestore.firestore()
-        db.collection("allergy").document(documentID).delete() { error in
-            if let error = error {
-                print("😡 ERROR: Deleting review documentID \(self.documentID) \(error.localizedDescription)")
-                completed(false)
-            } else {
-                completed(true)
             }
         }
     }

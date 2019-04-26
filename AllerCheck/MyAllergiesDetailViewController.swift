@@ -7,19 +7,24 @@
 //
 
 import UIKit
+import Firebase
 
 class MyAllergiesDetailViewController: UIViewController {
 
     @IBOutlet weak var saveBarButton: UIBarButtonItem!
     @IBOutlet weak var allergyTextField: UITextField!
+    @IBOutlet weak var deleteAllergyButton: UIButton!
+    
     
     var allergy: Allergy!
     
+    //MARK:- ViewDidLoad Setting Up ViewController
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if allergy == nil {
             allergy = Allergy()
+            deleteAllergyButton.isHidden = true
         }
         allergyTextField.text = allergy.allergy
         
@@ -38,6 +43,7 @@ class MyAllergiesDetailViewController: UIViewController {
         
     }
     
+    //MARK:- Exiting the ViewController Function
     func leaveViewController() {
         if  (presentingViewController?.shouldPerformSegue(withIdentifier: "AddAllergy", sender: Any?.self) ?? false) {
             allergyTextField.resignFirstResponder()
@@ -51,6 +57,7 @@ class MyAllergiesDetailViewController: UIViewController {
         leaveViewController()
     }
     
+    //MARK:- Saving Data from ViewController to Allergy Class
     @IBAction func saveBarButtonPressed(_ sender: UIBarButtonItem) {
         self.allergy.allergy = self.allergyTextField.text!
         allergy.saveData { success in
@@ -63,16 +70,18 @@ class MyAllergiesDetailViewController: UIViewController {
         }
     }
     
-    
-    
+    //MARK:- ViewController Changes Based on TextEditingChanged
     @IBAction func allergyFieldChanged(_ sender: UITextField) {
         if allergyTextField.text!.count > 0 {
             saveBarButton.isEnabled = true
+            deleteAllergyButton.isHidden = false
         } else {
             saveBarButton.isEnabled = false
+            deleteAllergyButton.isHidden = true
         }
     }
     
+    //MARK:- Saving Data Using Return/Enter Key
     @IBAction func allergyFieldReturnPressed(_ sender: UITextField) {
         sender.resignFirstResponder()
         self.allergy.allergy = self.allergyTextField.text!
@@ -86,6 +95,23 @@ class MyAllergiesDetailViewController: UIViewController {
         }
     }
     
-    
-
+    //MARK:- Deleting Data from Firebase Storage Using Delete Button
+    @IBAction func deleteAllergyButtonPressed(_ sender: UIButton) {
+        let db = Firestore.firestore()
+        db.collection("allergies").document(allergy.documentID).delete() { error in
+            if let error = error {
+                print("😡 ERROR: Deleting review documentID \(self.allergy.documentID) \(error.localizedDescription)")
+            } else {
+                let myAllergies = MyAllergies()
+                myAllergies.loadData {
+                    let isPresentingInAddMode = self.presentingViewController is UINavigationController
+                    if isPresentingInAddMode {
+                        self.dismiss(animated: true, completion: nil)
+                    } else {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }
+            }
+        }
+    }
 }

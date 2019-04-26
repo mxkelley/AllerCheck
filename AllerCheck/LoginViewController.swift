@@ -30,7 +30,6 @@ class LoginViewController: UIViewController {
         signIn()
     }
     
-    // Nothing should change unless you add different kinds of authentication.
     func signIn() {
         let providers: [FUIAuthProvider] = [
             FUIGoogleAuth(),
@@ -43,6 +42,7 @@ class LoginViewController: UIViewController {
         }
 
     }
+    
     @IBAction func logOutPressed(_ sender: UIBarButtonItem) {
         do {
             try authUI!.signOut()

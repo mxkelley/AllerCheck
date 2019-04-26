@@ -20,6 +20,8 @@ class FoodUPCs {
     var apiAppKeyStart = "&appKey="
     var apiAppKey = "ad485a869f0ac5af90d7f4705b2d89de"
     
+    
+    //MARK:- API Call Function
     func getFoodData(UPC: Int, completed: @escaping () -> ()) {
         apiUPC = UPC
         Alamofire.request("\(apiURLStart)\(apiUPCStart)\(apiUPC)\(apiAppIDStart)\(apiAppID)\(apiAppKeyStart)\(apiAppKey)").responseJSON { response

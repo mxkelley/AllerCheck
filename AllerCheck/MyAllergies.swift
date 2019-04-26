@@ -20,6 +20,7 @@ class MyAllergies {
         db = Firestore.firestore()
     }
     
+    //MARK:- Load Data from Firebase Storage Function
     func loadData(completed: @escaping () -> ()) {
         db.collection("allergies").addSnapshotListener{ (querySnapshot, error) in
             guard error == nil else {
@@ -47,6 +48,7 @@ class MyAllergies {
         }
     }
     
+    //MARK:- Add Additional Allergies to Search
     func addSearchableAllergies(myListedAllergies: [String], completed: () -> ()) {
         searchableAllergies = []
         doNotEat = true
@@ -109,6 +111,7 @@ class MyAllergies {
         completed()
     }
     
+    //MARK:- Function to Check Allergies
     func checkAllergies(ingredients: String, completed: () -> ()){
         print(ingredients)
         let defaultsData = UserDefaults.standard

@@ -72,7 +72,14 @@ extension ScanViewController: BarcodeScannerCodeDelegate {
     func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
         let defaultsData = UserDefaults.standard
         let food = FoodUPCs()
+        let myAllergies = MyAllergies()
+        var allergiesArray: [String] = []
         
+        for index in 0..<myAllergies.allergiesArray.count {
+            allergiesArray.append(myAllergies.allergiesArray[index].allergy)
+        }
+        
+        print(allergiesArray)
         print("UPC Code from Barcode Scanner: \(code)")
         
         food.getFoodData(UPC: Int(code)!, completed: {
@@ -82,13 +89,21 @@ extension ScanViewController: BarcodeScannerCodeDelegate {
             defaultsData.set(food.foodUPCArray[0].description, forKey: "description")
             defaultsData.set(food.foodUPCArray[0].ingredients, forKey: "ingredients")
             print("Completed")
+            
+            myAllergies.addSearchableAllergies(myListedAllergies: allergiesArray) {
+                
+                myAllergies.checkAllergies(ingredients: defaultsData.string(forKey: "ingredients")!) {
+                    let delayTime = DispatchTime.now() + 2
+                    DispatchQueue.main.asyncAfter(deadline: delayTime ) {
+                        self.controller.reset()
+                        self.tabBarController?.selectedIndex = 2
+                    }
+                }
+                
+            }
+            
         })
         
-        let delayTime = DispatchTime.now() + 2
-        DispatchQueue.main.asyncAfter(deadline: delayTime ) {
-            self.controller.reset()
-            self.tabBarController?.selectedIndex = 2
-        }
     }
     
 }

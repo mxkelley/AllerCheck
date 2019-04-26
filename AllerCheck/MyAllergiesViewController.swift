@@ -14,7 +14,7 @@ class MyAllergiesViewController: UIViewController {
     @IBOutlet weak var editBarButton: UIBarButtonItem!
     @IBOutlet weak var addBarButton: UIBarButtonItem!
     
-    var myAllergies = ["milk", "eggs", "peanuts", "bananas"]
+    var myAllergies: MyAllergies!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,19 +22,27 @@ class MyAllergiesViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        myAllergies = MyAllergies()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        myAllergies.loadData {
+            self.tableView.reloadData()
+        }
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            myAllergies.remove(at: indexPath.row)
+            myAllergies.allergiesArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade   )
         }
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let itemToMove = myAllergies[sourceIndexPath.row]
-        myAllergies.remove(at: sourceIndexPath.row)
-        myAllergies.insert(itemToMove, at: destinationIndexPath.row)
+        let itemToMove = myAllergies.allergiesArray[sourceIndexPath.row]
+        myAllergies.allergiesArray.remove(at: sourceIndexPath.row)
+        myAllergies.allergiesArray.insert(itemToMove, at: destinationIndexPath.row)
     }
     
     
@@ -42,7 +50,7 @@ class MyAllergiesViewController: UIViewController {
         if segue.identifier == "ShowAllergy" {
             let destination = segue.destination as! MyAllergiesDetailViewController
             let selectedIndexPath = tableView.indexPathForSelectedRow!
-            destination.allergy = myAllergies[selectedIndexPath.row]
+            destination.allergy = myAllergies.allergiesArray[selectedIndexPath.row]
         } else if segue.identifier == "AddAllergy" {
             if let selectedPath = tableView.indexPathForSelectedRow {
                 tableView.deselectRow(at: selectedPath, animated: true)
@@ -53,11 +61,11 @@ class MyAllergiesViewController: UIViewController {
     @IBAction func unwindFromMyAllergiesDetailViewController (segue: UIStoryboardSegue) {
         let source = segue.source as! MyAllergiesDetailViewController
         if let selectedIndexPath = tableView.indexPathForSelectedRow {
-            myAllergies[selectedIndexPath.row] = source.allergy
+            myAllergies.allergiesArray[selectedIndexPath.row] = source.allergy
             tableView.reloadRows(at: [selectedIndexPath], with: .automatic)
         } else {
-            let newIndexPath = IndexPath(row: myAllergies.count, section: 0)
-            myAllergies.append(source.allergy)
+            let newIndexPath = IndexPath(row: myAllergies.allergiesArray.count, section: 0)
+            myAllergies.allergiesArray.append(source.allergy)
             tableView.insertRows(at: [newIndexPath], with: .bottom)
             tableView.scrollToRow(at: newIndexPath, at: .bottom, animated: true)
         }
@@ -80,12 +88,12 @@ class MyAllergiesViewController: UIViewController {
 
 extension MyAllergiesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myAllergies.count
+        return myAllergies.allergiesArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = myAllergies[indexPath.row]
+        cell.textLabel?.text = myAllergies.allergiesArray[indexPath.row].allergy
         return cell
     }
     

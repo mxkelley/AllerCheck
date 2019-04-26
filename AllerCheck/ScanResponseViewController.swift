@@ -19,6 +19,7 @@ class ScanResponseViewController: UIViewController {
     @IBOutlet weak var addToFavoritesButton: UIButton!
     
     var food = FoodUPCs()
+    var myAllergies = MyAllergies()
     let defaultsData = UserDefaults.standard
     
     override func viewDidLoad() {
@@ -31,8 +32,23 @@ class ScanResponseViewController: UIViewController {
             nameLabel.text = defaultsData.string(forKey: "name")
             descriptionTextView.text = defaultsData.string(forKey: "description")
             ingredientsTextView.text = defaultsData.string(forKey: "ingredients")
+            if defaultsData.bool(forKey: "doNotEat") == true {
+                safetyImage.image = UIImage(named: "Unsafe")
+                safetyLabel.text = "🛑 DO NOT EAT!"
+                safetyLabel.textColor = UIColor.red
+                addToFavoritesButton.isHidden = true
+            } else if defaultsData.bool(forKey: "doNotEat") == false {
+                safetyImage.image = UIImage(named: "Safe")
+                safetyLabel.text = "✅ Safe To Eat"
+                safetyLabel.textColor = UIColor.green
+                addToFavoritesButton.isHidden = false
+            }
         } else {
             showUPCAlert(title: "No Ingredients Found", message: "Unable to find ingredients for this product.")
+            safetyImage.image = UIImage(named: "Unsafe")
+            safetyLabel.text = "🛑 DO NOT EAT!"
+            safetyLabel.textColor = UIColor.red
+            addToFavoritesButton.isHidden = true
             brandLabel.text = defaultsData.string(forKey: "brand")
             nameLabel.text = defaultsData.string(forKey: "name")
             descriptionTextView.text = defaultsData.string(forKey: "description")

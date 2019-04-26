@@ -13,15 +13,15 @@ class MyAllergiesDetailViewController: UIViewController {
     @IBOutlet weak var saveBarButton: UIBarButtonItem!
     @IBOutlet weak var allergyTextField: UITextField!
     
-    var allergy: String!
+    var allergy: Allergy!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if allergy == nil {
-            allergy = ""
+            allergy = Allergy()
         }
-        allergyTextField.text = allergy
+        allergyTextField.text = allergy.allergy
         
         if allergyTextField.text!.count > 0 {
             saveBarButton.isEnabled = true
@@ -38,13 +38,17 @@ class MyAllergiesDetailViewController: UIViewController {
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "UnwindFromAllergySave" {
-            allergy = allergyTextField.text
-        }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "UnwindFromAllergySave" {
+//            allergy = allergyTextField.text
+//        }
+//    }
+    
+    func updateDataFromInterface() {
+        allergy.allergy = allergyTextField.text!
     }
     
-    @IBAction func cancelBarButtonPressed(_ sender: UIBarButtonItem) {
+    func leaveViewController() {
         if  (presentingViewController?.shouldPerformSegue(withIdentifier: "AddAllergy", sender: Any?.self) ?? false) {
             allergyTextField.resignFirstResponder()
             dismiss(animated: true, completion: nil)
@@ -53,8 +57,20 @@ class MyAllergiesDetailViewController: UIViewController {
         }
     }
     
+    @IBAction func cancelBarButtonPressed(_ sender: UIBarButtonItem) {
+        leaveViewController()
+    }
+    
     
     @IBAction func saveBarButtonPressed(_ sender: UIBarButtonItem) {
+        allergy.saveData { success in
+            self.allergy.allergy = self.allergyTextField.text!
+            if success {
+                self.leaveViewController()
+            } else {
+                print("Can't segue because of the error")
+            }
+        }
     }
     
     @IBAction func allergyFieldChanged(_ sender: UITextField) {
@@ -67,8 +83,17 @@ class MyAllergiesDetailViewController: UIViewController {
     
     @IBAction func allergyFieldReturnPressed(_ sender: UITextField) {
         sender.resignFirstResponder()
-        allergy = allergyTextField.text
-        performSegue(withIdentifier: "UnwindFromAllergySave", sender: Any?.self)
+        allergy.saveData { success in
+            self.allergy.allergy = self.allergyTextField.text!
+            if success {
+                print(self.allergy.allergy)
+                self.leaveViewController()
+            } else {
+                print("Can't segue because of the error")
+            }
+        }
+//        allergy = allergyTextField.text
+//        performSegue(withIdentifier: "UnwindFromAllergySave", sender: Any?.self)
     }
     
     

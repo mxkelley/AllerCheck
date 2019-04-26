@@ -12,6 +12,8 @@
 		A38B3D9D226F613500FB3310 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A38B3D9B226F613500FB3310 /* Main.storyboard */; };
 		A38B3D9F226F613600FB3310 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A38B3D9E226F613600FB3310 /* Assets.xcassets */; };
 		A38B3DA2226F613600FB3310 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A38B3DA0226F613600FB3310 /* LaunchScreen.storyboard */; };
+		A390AD442273638000F1AFFD /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = A390AD432273638000F1AFFD /* Favorite.swift */; };
+		A390AD462273638B00F1AFFD /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = A390AD452273638B00F1AFFD /* Favorites.swift */; };
 		A3DDD264226F65F9006EAFE6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3DDD263226F65F9006EAFE6 /* GoogleService-Info.plist */; };
 		A3DDD266226F7B6E006EAFE6 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DDD265226F7B6E006EAFE6 /* ScanViewController.swift */; };
 		A3DDD268226F93B4006EAFE6 /* FoodUPCInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DDD267226F93B4006EAFE6 /* FoodUPCInfo.swift */; };
@@ -37,6 +39,8 @@
 		A38B3D9E226F613600FB3310 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A38B3DA1226F613600FB3310 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A38B3DA3226F613600FB3310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A390AD432273638000F1AFFD /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
+		A390AD452273638B00F1AFFD /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
 		A3DDD263226F65F9006EAFE6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		A3DDD265226F7B6E006EAFE6 /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		A3DDD267226F93B4006EAFE6 /* FoodUPCInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodUPCInfo.swift; sourceTree = "<group>"; };
@@ -99,6 +103,8 @@
 				A3DDD269226F94DF006EAFE6 /* FoodUPCs.swift */,
 				A3DDD27922726758006EAFE6 /* Allergy.swift */,
 				A3DDD26B226FA364006EAFE6 /* MyAllergies.swift */,
+				A390AD432273638000F1AFFD /* Favorite.swift */,
+				A390AD452273638B00F1AFFD /* Favorites.swift */,
 				A38B3D99226F613500FB3310 /* LoginViewController.swift */,
 				A3DDD2712270C7F6006EAFE6 /* AboutViewController.swift */,
 				A3DDD265226F7B6E006EAFE6 /* ScanViewController.swift */,
@@ -295,7 +301,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3DDD2782270CD26006EAFE6 /* ScanResponseViewController.swift in Sources */,
+				A390AD442273638000F1AFFD /* Favorite.swift in Sources */,
 				A3DDD270226FA566006EAFE6 /* MyAllergiesDetailViewController.swift in Sources */,
+				A390AD462273638B00F1AFFD /* Favorites.swift in Sources */,
 				A3DDD268226F93B4006EAFE6 /* FoodUPCInfo.swift in Sources */,
 				A3DDD26E226FA552006EAFE6 /* MyAllergiesViewController.swift in Sources */,
 				A3DDD27A22726758006EAFE6 /* Allergy.swift in Sources */,

@@ -159,6 +159,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IKC-sg-dli">
                                 <rect key="frame" x="105" y="588" width="136" height="30"/>
                                 <state key="normal" title="Add to My Favorites"/>
+                                <connections>
+                                    <action selector="addToFavoritesButtonPressed:" destination="dep-sk-Qeo" eventType="touchUpInside" id="jDw-Cy-YD9"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="(Insert Description Here)" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVU-bv-zi2">
                                 <rect key="frame" x="16" y="445" width="343" height="43"/>
@@ -281,6 +284,9 @@
                         <viewLayoutGuide key="safeArea" id="SVR-gc-6Ix"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Favorites" id="RDu-Rp-HnY"/>
+                    <connections>
+                        <outlet property="tableView" destination="EQV-DM-cuK" id="Hg7-gT-n4g"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zIZ-95-Q7I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -340,6 +346,7 @@
                                 </state>
                                 <connections>
                                     <action selector="deleteAllergyButtonPressed:" destination="W8l-eS-Uwf" eventType="touchUpInside" id="Ioo-Gd-Mcq"/>
+                                    <action selector="deleteButtonPressed:" destination="dUP-rB-v3c" eventType="touchUpInside" id="jpV-1U-65M"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="(Insert Description Here)" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CKH-O4-WzT">
@@ -399,6 +406,13 @@
                         <viewLayoutGuide key="safeArea" id="CBt-hm-EEF"/>
                     </view>
                     <navigationItem key="navigationItem" id="U0V-hA-UMt"/>
+                    <connections>
+                        <outlet property="brandLabel" destination="HaE-iT-7ye" id="ejX-r0-cds"/>
+                        <outlet property="deleteFavoriteButton" destination="hP5-PR-Fm5" id="AOi-RU-xVV"/>
+                        <outlet property="descriptionTextView" destination="CKH-O4-WzT" id="UF1-bI-Vov"/>
+                        <outlet property="ingredientsTextView" destination="VxX-x6-0ec" id="2nw-kY-YAr"/>
+                        <outlet property="productLabel" destination="hIJ-fF-aie" id="8wT-Qv-B52"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BPs-gi-Box" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -505,7 +519,7 @@
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Nutritionix" translatesAutoresizingMaskIntoConstraints="NO" id="4FR-Zt-QXd">
-                                <rect key="frame" x="199" y="213" width="160.00000000000023" height="128"/>
+                                <rect key="frame" x="199" y="213" width="160" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="IF6-rx-8u8"/>
                                     <constraint firstAttribute="width" constant="160" id="vDK-b7-SZf"/>

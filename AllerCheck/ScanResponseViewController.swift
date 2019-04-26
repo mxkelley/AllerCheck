@@ -22,6 +22,8 @@ class ScanResponseViewController: UIViewController {
     var myAllergies = MyAllergies()
     let defaultsData = UserDefaults.standard
     
+    var favorite: Favorite!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -75,5 +77,31 @@ class ScanResponseViewController: UIViewController {
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
         tabBarController?.selectedIndex = 1
     }
+    
+    //MARK:- Adding Response to Favorites
+    @IBAction func addToFavoritesButtonPressed(_ sender: UIButton) {
+        if let brandDefault = defaultsData.string(forKey: "brand") {
+            favorite.brandName = brandDefault
+        }
+        if let nameDefault = defaultsData.string(forKey: "name") {
+            favorite.productName = nameDefault
+        }
+        if let descriptionDefault = defaultsData.string(forKey: "description") {
+            favorite.productDescription = descriptionDefault
+        }
+        if let ingredientsDefault = defaultsData.string(forKey: "ingredients") {
+            favorite.productIngredients = ingredientsDefault
+        }
+        
+        favorite.saveData { success in
+            if success {
+                self.tabBarController?.selectedIndex = 4
+            } else {
+                print("Can't segue because of the error")
+            }
+        }
+    }
+    
+    
     
 }

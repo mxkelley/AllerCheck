@@ -17,12 +17,14 @@ class MyAllergiesDetailViewController: UIViewController {
     
     
     var allergy: Allergy!
+    var newAllergy: Bool = false
     
     //MARK:- ViewDidLoad Setting Up ViewController
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if allergy == nil {
+            newAllergy = true
             allergy = Allergy()
             deleteAllergyButton.isHidden = true
         }
@@ -72,12 +74,20 @@ class MyAllergiesDetailViewController: UIViewController {
     
     //MARK:- ViewController Changes Based on TextEditingChanged
     @IBAction func allergyFieldChanged(_ sender: UITextField) {
-        if allergyTextField.text!.count > 0 {
-            saveBarButton.isEnabled = true
-            deleteAllergyButton.isHidden = false
+        if newAllergy == true {
+            if allergyTextField.text!.count > 0 {
+                saveBarButton.isEnabled = true
+            } else {
+                saveBarButton.isEnabled = false
+            }
         } else {
-            saveBarButton.isEnabled = false
-            deleteAllergyButton.isHidden = true
+            if allergyTextField.text!.count > 0 {
+                saveBarButton.isEnabled = true
+                deleteAllergyButton.isHidden = false
+            } else {
+                saveBarButton.isEnabled = false
+                deleteAllergyButton.isHidden = true
+            }
         }
     }
     

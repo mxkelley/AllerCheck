@@ -38,6 +38,7 @@ class LoginViewController: UIViewController {
             FUIGoogleAuth(),
         ]
         if authUI.auth?.currentUser == nil {
+            logOutBarButton.title = "Log In"
             self.authUI?.providers = providers
             present(authUI.authViewController(), animated: true, completion: nil)
         } else {

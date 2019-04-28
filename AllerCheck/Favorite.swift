@@ -56,19 +56,7 @@ class Favorite {
         self.postingUserID = postingUserID
         //Create the dictionary representing the data we want to save
         let dataToSave = self.dictionary
-        //If we HAVE saved a record, we'll have a documentID
-        if self.documentID != "" {
-            let ref = db.collection("favorites").document(self.documentID)
-            ref.setData(dataToSave) { (error) in
-                if let error = error {
-                    print("*** ERROR: Updating document \(self.documentID) \(error.localizedDescription)")
-                    completed(false)
-                } else {
-                    print("^^^ Document updated with ref ID \(ref.documentID)")
-                    completed(true)
-                }
-            }
-        } else {
+            //Always create a new document ID because favorites data is never edited
             var ref: DocumentReference? = nil //let firestore create the new documentID
             ref = db.collection("favorites").addDocument(data: dataToSave) { (error) in
                 if let error = error {
@@ -80,6 +68,5 @@ class Favorite {
                     completed(true)
                 }
             }
-        }
     }
 }
